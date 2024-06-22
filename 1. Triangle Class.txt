@@ -1,0 +1,210 @@
+1. Triangle Class:
+
+#include <iostream>
+#include <cmath>
+
+class Triangle {
+private:
+    double side1, side2, side3;
+
+public:
+    Triangle(double s1, double s2, double s3) : side1(s1), side2(s2), side3(s3) {}
+
+    void printAreaAndPerimeter() {
+        double s = (side1 + side2 + side3) / 2;
+        double area = sqrt(s * (s - side1) * (s - side2) * (s - side3));
+        double perimeter = side1 + side2 + side3;
+
+        std::cout << "Area: " << area << std::endl;
+        std::cout << "Perimeter: " << perimeter << std::endl;
+    }
+};
+
+int main() {
+    Triangle triangle(3, 4, 5);
+    triangle.printAreaAndPerimeter();
+
+    return 0;
+}
+2. Series Sum Calculation:
+
+#include <iostream>
+#include <cmath>
+
+int factorial(int n) {
+    if (n == 0 || n == 1) return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int n = 5; // Sample input
+    double sum = 0;
+
+    for (int i = 1; i <= n; ++i) {
+        sum += factorial(i) / i;
+    }
+
+    std::cout << "Sum of the series: " << sum << std::endl;
+
+    return 0;
+}
+3. Degree Class Hierarchy:
+
+#include <iostream>
+
+class Degree {
+public:
+    void getDegree() {
+        std::cout << "I got a Degree" << std::endl;
+    }
+};
+
+class Undergraduate : public Degree {
+public:
+    void getDegree() {
+        std::cout << "I am an Undergraduate" << std::endl;
+    }
+};
+
+class Postgraduate : public Degree {
+public:
+    void getDegree() {
+        std::cout << "I am a Postgraduate" << std::endl;
+    }
+};
+
+int main() {
+    Degree degree;
+    Undergraduate undergrad;
+    Postgraduate postgrad;
+
+    degree.getDegree();
+    undergrad.getDegree();
+    postgrad.getDegree();
+
+    return 0;
+}
+4. Displaying Addresses of Array Elements:
+
+#include <iostream>
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    std::cout << "Displaying address using arrays:" << std::endl;
+    for (int i = 0; i < n; ++i) {
+        std::cout << "Address of arr[" << i << "]: " << &arr[i] << std::endl;
+    }
+
+    return 0;
+}
+5. Find Smallest Missing Element in Sorted Array:
+
+#include <iostream>
+
+int findSmallestMissing(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] != i + 1) {
+            return i + 1;
+        }
+    }
+    return n + 1;
+}
+
+int main() {
+    int arr[] = {1, 3, 4, 5, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int missing = findSmallestMissing(arr, n);
+
+    std::cout << "Smallest missing element: " << missing << std::endl;
+
+    return 0;
+}
+6. Order Array in Non-Decreasing Order:
+
+#include <iostream>
+#include <algorithm>
+
+int main() {
+    int arr[] = {5, 2, 8, 1, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    std::sort(arr, arr + n);
+
+    std::cout << "Array in non-decreasing order:" << std::endl;
+    for (int i = 0; i < n; ++i) {
+        std::cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+7. Store, Sort, and Print Elements Using Pointer:
+
+#include <iostream>
+#include <algorithm>
+
+int main() {
+    const int n = 5; // Number of elements
+    int arr[n];
+
+    // Input
+    std::cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; ++i) {
+        std::cin >> arr[i];
+    }
+
+    // Sorting
+    std::sort(arr, arr + n);
+
+    // Print using pointer
+    int *ptr = arr;
+    std::cout << "Sorted elements using pointer:" << std::endl;
+    for (int i = 0; i < n; ++i) {
+        std::cout << *ptr << " ";
+        ++ptr;
+    }
+
+    return 0;
+}
+8. Vote Eligibility with Years Remaining:
+
+#include <iostream>
+
+int main() {
+    int age;
+    std::cout << "Enter age: ";
+    std::cin >> age;
+
+    const int votingAge = 18;
+
+    if (age >= votingAge) {
+        std::cout << "You are eligible to vote!" << std::endl;
+    } else {
+        int yearsRemaining = votingAge - age;
+        std::cout << "You are not eligible to vote. " << yearsRemaining << " years left to be eligible." << std::endl;
+    }
+
+    return 0;
+}
+9. Celsius to Fahrenheit Conversion:
+
+#include <iostream>
+
+int main() {
+    const int n = 5; // Number of elements
+    double celsius[n] = {0, 10, 20, 30, 40};
+    double fahrenheit[n];
+
+    for (int i = 0; i < n; ++i) {
+        fahrenheit[i] = (celsius[i] * 9 / 5) + 32;
+    }
+
+    std::cout << "Celsius to Fahrenheit Conversion:" << std::endl;
+    for (int i = 0; i < n; ++i) {
+        std::cout << celsius[i] << " Celsius = " << fahrenheit[i] << " Fahrenheit" << std::endl;
+    }
+
+    return 0;
+}
